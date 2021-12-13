@@ -1,6 +1,11 @@
-import { TestBed } from '@angular/core/testing';
+
+import { ComponentFixture, ComponentFixtureAutoDetect, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+
+
+let component: AppComponent;
+let fixture: ComponentFixture<AppComponent>;
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -9,9 +14,16 @@ describe('AppComponent', () => {
         RouterTestingModule
       ],
       declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
+        AppComponent 
+      ]
+      })
+      .compileComponents()
+  });
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it('should create the app', () => {
@@ -20,16 +32,5 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'GoogleBooks'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('GoogleBooks');
-  });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('GoogleBooks app is running!');
-  });
 });
